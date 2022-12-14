@@ -10,6 +10,7 @@ const formError = document.querySelector("#form-error");
 const formErrorText = "Please correct mistakes made in your complaint form!!";
 const userInfoSection = document.querySelector("#user-info");
 const main = document.querySelector("main");
+console.log(main);
 
 const userFirstName = document.querySelector("#first-name-value");
 const userLastName = document.querySelector("#last-name-value");
@@ -141,7 +142,7 @@ function cleanUp() {
   applyDefaultToField(complaintInput);
 }
 
-function constructParagraphn(heading, className, id, inputValue) {
+function constructParagraph(heading, className, id, inputValue) {
   const userInfoDiv = document.createElement("div");
   const userInfoHeading = document.createElement("p");
   const userInputValue = document.createElement("p");
@@ -161,40 +162,40 @@ function constructParagraphn(heading, className, id, inputValue) {
   return userInfoDiv;
 }
 
-function constructSectionContent() {
-  userInfoSection.append(
-    constructParagraphn(
+function constructSectionContent(section) {
+  section.append(
+    constructParagraph(
       "First Name:",
       "first-name-heading",
       "first-name-value",
       firstNameInput
     )
   );
-  userInfoSection.append(
-    constructParagraphn(
+  section.append(
+    constructParagraph(
       "Last Name:",
       "last-name-heading",
       "last-name-value",
       lastNameInput
     )
   );
-  userInfoSection.append(
-    constructParagraphn(
+  section.append(
+    constructParagraph(
       "Email:",
       "email-heading",
       "email-adress-value",
       emailInput
     )
   );
-  userInfoSection.append(
-    constructParagraphn(
+  section.append(
+    constructParagraph(
       "Complaint:",
       "user-info-heading",
       "user-data",
       complaintInput
     )
   );
-  userInfoSection.append(
+  section.append(
     displayDate(
       "Date of complaint:",
       "user-info-heading",
@@ -202,20 +203,19 @@ function constructSectionContent() {
     )
   );
 
-  return userInfoSection;
+  return section;
 }
 
 function createSection() {
   const complaintSection = document.createElement("section");
-  main.append(complaintSection);
-  complaintSection.id = "user-info";
-  complaintSection.append(constructSectionContent());
+  constructSectionContent(complaintSection);
   return complaintSection;
 }
 
 function registerComplaint() {
   const mainElement = document.querySelector("main");
   mainElement.append(createSection());
+  console.log(mainElement);
 }
 
 function displayDate(heading, className, id) {
