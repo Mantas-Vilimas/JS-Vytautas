@@ -1,0 +1,112 @@
+:root {
+    --btn-color: rgb(113, 113, 235)
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: .1rem;
+    
+}
+
+body {
+    background-color: beige;
+}
+
+.form-dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 300px;
+    max-width: 400px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+form {
+    padding: 20px 20px 40px 20px;
+    border: 1px solid black;
+    background-color: aliceblue;
+    display: none;
+    flex-direction: column;
+}
+
+form {
+    animation: fade-in 2s forwards;
+
+}
+
+
+@keyframes fade-in {
+
+    0% {
+        opacity: 0;
+       transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+#close-btn {
+    background: transparent;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+#submit-btn,
+#help-btn {
+    border: none;
+    background-color: var(--btn-color);
+    padding: 10px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.input-container  {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 4px 0;
+}
+
+.info-container {
+    display: flex;
+    gap: 20px;
+}
+
+.user-data {
+    font-weight: bold;
+}
+
+input {
+    border-radius: 4px;
+    padding: 10px;
+}
+
+#help-btn {
+    max-width: 60px;
+    align-self: flex-end;
+}
+
+
+textarea {
+    resize: none;
+  }
+
+#form-error {
+    color: red;
+    margin: 20px 0;
+}

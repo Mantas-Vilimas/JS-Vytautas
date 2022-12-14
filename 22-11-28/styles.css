@@ -1,0 +1,41 @@
+.error {
+    color: red;
+}
+
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+#result {
+    font-size: 24px;
+    color: green;
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    padding: 20px;
+    z-index: 100;
+    background-color: white;
+}
+
+#close {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+
+}

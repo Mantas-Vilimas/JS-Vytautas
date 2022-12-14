@@ -1,0 +1,30 @@
+/* :root {
+    --modeColor: red;
+}
+
+.test {
+    color: var(--modeColor);
+} */
+
+body.light {
+    --color: #000;
+    --bgColor: #fff;
+}
+
+body.dark {
+    --color: #fff;
+    --bgColor: #000;
+}
+
+button {
+    border-radius: 20px;
+    padding: 10px;
+}
+
+p,
+button {
+    color: var(--color);
+    background-color: var(--bgColor);
+}
+
+

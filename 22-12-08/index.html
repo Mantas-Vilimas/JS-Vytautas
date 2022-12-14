@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section id="user-info">
+        <div class="info-container">
+          <p class="first-name-heading">First Name</p>
+          <p id="first-name-value" class="user-data"></p>
+        </div>
+        <div class="info-container">
+          <p class="last-name-heading">Last name:</p>
+          <p id="last-name-value" class="user-data"></p>
+        </div>
+        <div class="info-container">
+          <p class="emai-heading">Email adress:</p>
+          <p id="email-adress-value" class="user-data"></p>
+        </div>
+        <div class="info-container">
+          <p class="complaint-heading">Complaint:</p>
+          <p id="complaint-value" class="user-data"></p>
+        </div>
+        <div class="info-container">
+          <p class="user-info-heading">Date of complaint</p>
+          <p id="complaint-date-value" class="user-data"></p>
+        </div>
+      </section>
+
+      <section class="form-dialog">
+        <form action="" method="post">
+          <button id="close-btn" type="button">&times;</button>
+          <p class="form-text">
+            We are happy to help you if you want to fill a complaint with us
+            then please fill this form with it. we are pushing ourselves to meet
+            all of our customers demands and will look into each and every
+            complaint tht we receive
+          </p>
+          <p id="form-error"></p>
+          <div class="input-container">
+            <label for="first-name">First name:</label>
+            <input type="text" name="first-name" id="first-name" />
+          </div>
+          <div class="input-container">
+            <label for="last-name">Last name:</label>
+            <input type="text" name="last-name" id="last-name" />
+          </div>
+          <div class="input-container">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          <div class="input-container">
+            <label for="complaint">Complaint:</label>
+            <textarea
+              name="complaint"
+              id="complaint"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+          <button id="submit-btn">Submit</button>
+        </form>
+        <button id="help-btn">HELP</button>
+      </section>
+    </main>
+  </body>
+</html>

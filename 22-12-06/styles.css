@@ -1,0 +1,91 @@
+body {
+    background-color: beige;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+
+}
+
+.color-container {
+    border: 1px solid black;
+    height: 200px;
+    width: 400px;
+}
+
+.generate-btn {
+    border: none;
+    background-color: green;
+    color: white;
+    padding: .5rem 2rem;
+    cursor: pointer;
+}
+
+.generate-btn:hover{
+    background-color: rgb(3, 49, 12);
+}
+
+#modal {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.modal-container {
+    display : flex;
+    flex-direction: column;
+    background-color: white;
+    padding-bottom: 10px;
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+
+}
+
+.modal-header {
+    text-align: right;
+    background-color: blue;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+#close-btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+#accept-btn {
+    background-color: green;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}

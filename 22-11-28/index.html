@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/22-11-28/styles.css" />
+    <script src="/22-11-28/script.js" defer></script>
+  </head>
+  <body>
+    <h1>BMR Calculator</h1>
+
+    <div>
+      <label for="height">Your height (cm)</label>
+      <input type="text" id="height" name="height" />
+      <span id="height-error" class="error"></span>
+    </div>
+
+    <div>
+      <label for="weight">Your weight (kg)</label>
+      <input type="text" id="weight" name="weight" />
+      <span id="weight-error" class="error"></span>
+    </div>
+
+    <div>
+      <label for="age">Your age</label>
+      <input type="text" id="age" name="age" />
+      <span id="age-error" class="error"></span>
+    </div>
+
+    <div>
+      <p>Please select yout gender:</p>
+      <input type="radio" id="gender-man" name="gender" value="man" />
+      <label for="gender-man">Man</label>
+      <input type="radio" id="gender-woman" name="gender" value="woman" />
+      <label for="gender-woman">Woman</label><br />
+      <span id="gender-error" class="error"></span>
+    </div>
+
+    <div>
+      <p>Select your activity level:</p>
+      <input
+        type="radio"
+        id="actiity-sedentary"
+        name="activity"
+        value="sedentary"
+      />
+      <label for="actiity-sedentary">Sedentary (little or no exercise)</label
+      ><br />
+      <input type="radio" id="actiity-light" name="activity" value="light" />
+      <label for="actiity-light"
+        >Lightly active (light exercise/sports 1-3 days/week)</label
+      ><br />
+      <input
+        type="radio"
+        id="actiity-moderately"
+        name="activity"
+        value="moderately"
+      />
+      <label for="actiity-moderately"
+        >Moderately active (moderate exercise/sports 3-5 days/week)</label
+      ><br />
+      <input type="radio" id="actiity-very" name="activity" value="very" />
+      <label for="actiity-very"
+        >Very active (hard exercise/sports 6-7 days a week)</label
+      ><br />
+
+      <input type="radio" id="actiity-extra" name="activity" value="extra" />
+      <label for="actiity-extra"
+        >If you are extra active (very hard exercise/sports & a physical
+        job)</label
+      ><br />
+      <span id="activity-error" class="error"></span>
+    </div>
+
+    <button onclick="calculateBMR()">Calculate!</button>
+
+    <div id="overlay" class="invisible">
+      <button id="close" onclick="closeWindow()">X</button>
+      <p id="result" class="invisible"></p>
+    </div>
+  </body>
+</html>

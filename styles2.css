@@ -1,0 +1,46 @@
+/* .hover:hover{
+    color: red;
+}
+
+#dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% +10px);
+    left: 0;
+    background-color: grey;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+}
+
+.dropdown-menu.active {
+    display: block;
+} */
+
+.accordeon-item {
+    position: relative;
+    z-index: 1;
+}
+
+.accordeon-content {
+    display: none;
+}
+
+.accordeon-content.active {
+    display: block;
+    animation-name: slider;
+    animation-duration: 2s;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    overflow: hidden;
+}
+
+
+@keyframes slider {
+    0% {top: -100px}
+    100% {top: 25px;}
+}
