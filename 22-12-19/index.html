@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <h1>Dragon Killer 3</h1>
+
+    <main>
+      <div class="health-container">
+        <div class="health-display">
+          <span class="character-name"> Dragon</span> Health:
+          <span id="dragon-health">200</span>
+        </div>
+        <div class="health-display">
+          <span class="character-name">Knight</span> Health:
+
+          <span id="knight-health">100</span>
+        </div>
+      </div>
+
+      <div class="characters-display">
+        <div class="image-container">
+          <img
+            src="./images/shenron-vegeta-goku-dragon-ball-fighterz-goku-d43bd144e858f4ddd2168062424299e3.png"
+            alt="dragon"
+          />
+        </div>
+        <div id="game-status">VS</div>
+        <div class="image-container">
+          <img src="./images/ox-knight.png" alt="knight" />
+        </div>
+      </div>
+
+      <div class="rules-actions-container">
+        <div class="rules-container">
+          <p>Dragon will attack you every turn! What are you going to do?</p>
+          <p>Dragon deals 1-20 damage every turn.</p>
+          <p>Dragon has a 33% chance of taking no damage fro you.</p>
+        </div>
+        <div class="actions-container">
+          <div>
+            <button id="attack-action">Attack</button>
+          </div>
+          <div>
+            <button id="defend-action">Defend</button>
+          </div>
+          <div>
+            <button id="heal-action">Heal</button>
+          </div>
+
+          <div>You deal 1-10 damage</div>
+          <div>You take no damage, your next attack deals double damage</div>
+          <div>You regain 1-30 health</div>
+        </div>
+      </div>
+
+      <div id="battle-log">Battle Log</div>
+    </main>
+  </body>
+</html>

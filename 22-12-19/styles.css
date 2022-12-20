@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.characters-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 40vh;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    text-align: center;
+}
+
+img {
+    width: 70%;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+#game-status {
+    color: red;
+    font-size: 60px;
+    flex: 1;
+}
+
+.image-container {
+    flex: 1;
+}
+.health-display {
+    flex: 1;
+}
+
+.health-container {
+    display: flex;
+}
+
+.character-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.rules-actions-container {
+    display: flex;
+    padding-bottom: 20px;
+
+}
+
+.actions-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1r 1r;
+    gap: 10px;
+    flex: 1;
+}
+.rules-container {
+    flex: 1;
+    text-align: center;
+}
+
+.rules-container p:first-child {
+    margin-bottom: 40px;
+}
+
+button {
+    width: 100%;
+    background-color: #FF6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+#battle-log {
+    display: none;
+    flex-direction: column;
+    height: 300px;
+    overflow-y: scroll;
+    gap: 20px;
+}
+
