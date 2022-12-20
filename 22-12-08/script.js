@@ -59,14 +59,24 @@ function validateForm() {
 function submitForm(event) {
   event.preventDefault();
   if (validateForm()) {
-    userEmail.textContent = emailInput.value;
-    userFirstName.textContent = firstNameInput.value;
-    userLastName.textContent = lastNameInput.value;
-    userComplaint.textContent = complaintInput.value;
-    userDate.textContent = new Date().toLocaleString();
-    registerComplaint();
+    if (
+      userEmail.textContent &&
+      userFirstName.textContent &&
+      userLastName.textContent &&
+      userComplaint.textContent
+    ) {
+      registerComplaint();
+    } else {
+      userEmail.textContent = emailInput.value;
+      userFirstName.textContent = firstNameInput.value;
+      userLastName.textContent = lastNameInput.value;
+      userComplaint.textContent = complaintInput.value;
+      userDate.textContent = new Date().toLocaleString();
+    }
+    cleanUp();
     closeObject();
-  } else {
+  }
+  if (!validateForm()) {
     validateInputs();
   }
 }
@@ -215,7 +225,6 @@ function createSection() {
 function registerComplaint() {
   const mainElement = document.querySelector("main");
   mainElement.append(createSection());
-  console.log(mainElement);
 }
 
 function displayDate(heading, className, id) {

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget Tracker</title>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Budget Tracker</h1>
+    </header>
+
+    <main>
+      <div id="budget-calculator">
+        <select name="tracker-type" id="tracker-type">
+          <option value="current-budget">
+            <!--nededu id, gal pasiimsiu value? -->
+            Current Budget
+          </option>
+          <option value="add-expenses">Add Expenses</option>
+          <!--nededu id, gal pasiimsiu value? -->
+        </select>
+
+        <section id="current-budget">
+          <label for="budget-value">Budget</label>
+          <input type="number" name="budget" id="budget-value" value="0" />
+          <button id="submit-budget">Submit Budget</button>
+          <p>
+            Current balance after expenses:<span id="after-expenses"></span>
+          </p>
+        </section>
+
+        <section id="add-expenses">
+          <label for="date">Date:</label>
+          <input type="date" name="date" id="date" />
+
+          <label for="spent-amount">Spent Amount:</label>
+          <input type="number" name="spent-amount" id="spent-amount" />
+
+          <label for="expense-type"></label>
+          <select name="expense-type" id="expense-type">
+            <!--nededu id, gal pasiimsiu value? -->
+            <option value="groceries">Groceries</option>
+            <option value="leisure">Leisure</option>
+            <option value="clothing">Clothing</option>
+            <option value="travel">Travel</option>
+          </select>
+
+          <label for="notes">Notes:</label>
+          <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+
+          <button id="save-expense">Save Expense</button>
+        </section>
+      </div>
+
+      <div id="expenses-container">
+        <!-- <div class="expenses-list">
+          <p id="date-paragraph">Date 2022-12-15</p>
+          <p id="spent-amount-paragrap">1</p>
+          <p id="expense-type-paragraph">Groceries</p>
+          <p id="notes-paragraph">abc</p>
+        </div> -->
+      </div>
+    </main>
+  </body>
+</html>
