@@ -19,21 +19,67 @@ let knightDamage;
 let dragonDamage;
 let actionTextKnight;
 let actionTextDragon;
-let isKnightDefending = true;
+let isKnightDefending = false;
 let knightHealing;
+let knightAttackChance;
+
+function knightAttackChanceCalculator() {
+  knightAttackChance = Math.random() < 33 / 100;
+  return knightAttackChance;
+}
 
 function attackAction() {
-  isKnightDefending = false;
-  knightHealing = 0;
-  actionTextKnight = "attacks";
-  actionTextDragon = "attacks";
-  knightDamage = Math.ceil(Math.random() * 10);
+  if (isKnightDefending) {
+    if (knightAttackChanceCalculator()) {
+      knightDamage = 0;
+      knightHealing = 0;
+      actionTextKnight = "attacks with no luck";
+      knightAttack();
+      dragonAttack();
+      submitBattleLog();
+      console.log(knightDamage, dragonDamage, knightHealing);
+      battleEnd();
+    } else {
+      knightDamage = Math.ceil(Math.random() * 10) * 2;
+      actionTextKnight = "attacks with double damage";
+      knightAttack();
+      dragonAttack();
+      submitBattleLog();
+      console.log(knightDamage, dragonDamage, knightHealing);
+      battleEnd();
+    }
+  } else {
+    if (knightAttackChanceCalculator()) {
+      isKnightDefending = false;
+      knightHealing = 0;
+      knightDamage = 0;
+      actionTextKnight = "attacks with no luck";
+      knightAttack();
+      dragonAttack();
+      submitBattleLog();
+      console.log(knightDamage, dragonDamage, knightHealing);
+      battleEnd();
+    } else {
+      isKnightDefending = false;
+      knightHealing = 0;
+      actionTextKnight = "attacks";
+      actionTextDragon = "attacks";
+      knightDamage = Math.ceil(Math.random() * 10);
+      dragonDamage = Math.ceil(Math.random() * 20);
+      dragonHealthValue = dragonHealthValue - knightDamage;
+      dragonHealth.textContent = dragonHealthValue;
+      dragonAttack();
+      submitBattleLog();
+      console.log(knightDamage, dragonDamage, knightHealing);
+      battleEnd();
+    }
+  }
+}
+
+function knightAttack() {
   dragonDamage = Math.ceil(Math.random() * 20);
   dragonHealthValue = dragonHealthValue - knightDamage;
   dragonHealth.textContent = dragonHealthValue;
-  dragonAttack();
-  submitBattleLog();
-  battleEnd();
 }
 
 function defendAction() {
@@ -45,6 +91,7 @@ function defendAction() {
     knightDamage = 0;
     dragonDamage = 0;
     submitBattleLog();
+    console.log(knightDamage, dragonDamage, knightHealing);
     battleEnd();
   }
 }
@@ -53,12 +100,13 @@ function healAction() {
   isKnightDefending = false;
   knightDamage = 0;
   knightHealing = Math.ceil(Math.random() * 30);
-  knightHealth.textContent = knightHealthValue + knightHealing;
   dragonDamage = Math.ceil(Math.random() * 20);
+  knightHealth.textContent = knightHealthValue + knightHealing - dragonDamage;
 
   actionTextKnight = "heals";
   actionTextDragon = "attacks";
   submitBattleLog();
+  console.log(knightDamage, dragonDamage, knightHealing);
   battleEnd();
 }
 
@@ -68,7 +116,6 @@ function dragonAttack() {
   } else {
     actionText = "attacks";
     knightHealthValue = knightHealthValue - dragonDamage;
-    console.log(knightHealthValue);
     knightHealth.textContent = knightHealthValue;
   }
 }
@@ -108,6 +155,16 @@ function createBattleLogElements(battleLog) {
     knightAttackLog.textContent = `Knight ${actionTextKnight} and deals ${knightDamage} damage.`;
     dragonAttackLog.textContent = `Dragon ${actionTextDragon} and deals ${dragonDamage} damage.`;
     battleLog.append(round, knightAttackLog, dragonAttackLog);
+  } else {
+    if (knightHealing > 0) {
+      knightAttackLog.textContent = `Knight ${actionTextKnight} ${knightHealing}.`;
+      dragonAttackLog.textContent = `Dragon ${actionTextDragon} and deals ${dragonDamage} damage.`;
+      battleLog.append(round, knightAttackLog, dragonAttackLog);
+    } else {
+      knightAttackLog.textContent = `Knight ${actionTextKnight} and deals ${knightDamage} damage.`;
+      dragonAttackLog.textContent = `Dragon ${actionTextDragon} and deals ${dragonDamage} damage.`;
+      battleLog.append(round, knightAttackLog, dragonAttackLog);
+    }
   }
   if (isKnightDefending) {
     knightAttackLog.textContent = `Knight ${actionTextKnight}.`;
