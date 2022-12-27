@@ -40,6 +40,7 @@ function goBack(event) {
   if (step.step === 4) {
     fourthStepContainer.style.display = "none";
     thirdStepContainer.style.display = "flex";
+    continueButton.style.display = "inline";
     updateObject(step, "step", 3);
   }
 }
@@ -51,6 +52,7 @@ function proceedFormStep(event) {
       thirdStepContainer.style.display = "none";
       fourthStepContainer.style.display = "flex";
       updateObject(step, "step", 4);
+      continueButton.style.display = "none";
       result.textContent = JSON.stringify(step);
     }
   }
@@ -97,6 +99,7 @@ function validateFirstStep() {
     applyErrorToField(lastName);
     result = false;
   }
+  // console.log(email.validity.typeMismatch);
   // if (email.validity.typeMismatch || email.value) {
   //   applyDefaultToField(email);
   //   updateObject((step.user.email = email.value));
