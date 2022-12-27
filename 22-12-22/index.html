@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <form action="" method="post">
+        <div class="first-step">
+          <label for="first-name">First Name</label>
+          <input type="text" name="firstName" id="first-name" required />
+          <label for="last-name">Last Name</label>
+          <input type="text" name="last-name" id="last-name" required />
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="second-step">
+          <label for="primary-address">Primary Address</label>
+          <input
+            type="text"
+            name="primary-address"
+            id="primary-address"
+            required
+          />
+          <label for="secondary-address">Secondary address</label>
+          <input type="text" name="secondary-address" id="secondary-address" />
+          <label for="shirt-size">Shirt size</label>
+          <input type="text" name="shirt-size" id="shirt-size" required />
+        </div>
+        <div class="third-step">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required />
+          <label for="repeat-password">Repeat password</label>
+          <input
+            type="password"
+            name="repeat-password"
+            id="repeat-password"
+            required
+          />
+        </div>
+        <div class="fourth-step">
+          <textarea name="result" id="result"></textarea>
+        </div>
+        <div class="buttons">
+          <button id="back-button">Back</button>
+          <button id="continue-button">Continue</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

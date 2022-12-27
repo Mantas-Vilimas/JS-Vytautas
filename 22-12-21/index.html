@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adding Keys</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="inputs">
+        <label for="key">New Key</label>
+        <input type="text" id="key" />
+        <label for="existing-keys">Existing Keys</label>
+        <select disabled name="existing-keys" id="existing-keys">
+          <option disabled hidden selected value id="default-option">
+            Select a Key
+          </option>
+        </select>
+        <label for="value">Value</label>
+        <input type="text" id="value" />
+        <button id="update-btn">Update Keys</button>
+      </div>
+      <div class="result">
+        <textarea id="result-display" disabled></textarea>
+      </div>
+    </main>
+  </body>
+</html>
