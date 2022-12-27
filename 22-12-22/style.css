@@ -8,6 +8,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url("https://images.unsplash.com/photo-1521729839347-131a32f9abcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1197&q=80");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 main {
@@ -18,9 +23,10 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
-    border: 1px solid black;
-    padding: 10px;
+    gap: 20px;
+    padding: 20px;
+    width: 250px;
+    background: rgba(129, 170, 173, 0.6);
 }
 
 .first-step,
@@ -32,4 +38,35 @@ form {
 }
 .buttons {
     text-align: center;
+}
+
+textarea {
+    height: 200px;
+    width: 100%;
+    background: gray;
+    color: white;
+    resize: none;
+}
+
+input {
+    padding: 5px;
+    border: 1px solid rgb(0, 152, 187);
+    border-radius: 10px;
+}
+
+label {
+    color: rgb(0, 27, 36);
+    margin-top: 5px;
+}
+
+button {
+    background-color: rgb(255, 215, 143);
+    padding: 4px 6px;
+    border: none;
+    color: rgb(0, 27, 36);
+    border-radius: 10px;
+    font-weight: bold;
+}
+#password-error {
+    color: rgb(162, 35, 35);
 }

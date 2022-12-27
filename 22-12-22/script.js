@@ -5,44 +5,72 @@ const fourthStepContainer = document.querySelector(".fourth-step");
 const continueButton = document.querySelector("#continue-button");
 const backButton = document.querySelector("#back-button");
 const form = document.querySelector("form");
+const result = document.querySelector("#result");
 
 secondStepContainer.style.display = "none";
 thirdStepContainer.style.display = "none";
 fourthStepContainer.style.display = "none";
 backButton.style.display = "none";
 
-const step0 = { step: 0 };
-// const step1 = { step: 1 };
-// const step2 = { step: 2 };
-// const step3 = { step: 3 };
+const step = { step: 1, user: {} };
 
-continueButton.addEventListener("click", proceedForm);
+continueButton.addEventListener("click", proceedFormStep);
 backButton.addEventListener("click", goBack);
 
 function goBack(event) {
   event.preventDefault();
-  if ((step0.step = 1)) {
+
+  if (step.step === 1) {
+    backButton.style.display = "none";
+  }
+
+  if (step.step === 2) {
     secondStepContainer.style.display = "none";
     firstStepContainer.style.display = "flex";
-    updateObject(step0, "step", 0);
-  }
-  if ((step0.step = 0)) {
     backButton.style.display = "none";
+    updateObject(step, "step", 1);
+  }
+
+  if (step.step === 3) {
+    thirdStepContainer.style.display = "none";
+    secondStepContainer.style.display = "flex";
+    updateObject(step, "step", 2);
+  }
+
+  if (step.step === 4) {
+    fourthStepContainer.style.display = "none";
+    thirdStepContainer.style.display = "flex";
+    updateObject(step, "step", 3);
   }
 }
 
-function proceedForm(event) {
+function proceedFormStep(event) {
   event.preventDefault();
-  if (validateFirstStep()) {
-    firstStepContainer.style.display = "none";
-    secondStepContainer.style.display = "flex";
-    backButton.style.display = "inline";
-    updateObject(step0, "step", 1);
+  if (step.step === 3) {
+    if (validateThirdStep()) {
+      thirdStepContainer.style.display = "none";
+      fourthStepContainer.style.display = "flex";
+      updateObject(step, "step", 4);
+      result.textContent = JSON.stringify(step);
+    }
   }
-  if ((step0.step = 1)) {
-    secondStepContainer.style.display = "none";
-    thirdStepContainer.style.display = "flex";
-    updateObject(step0, "step", 2);
+
+  if (step.step === 2) {
+    if (validateSecondStep()) {
+      secondStepContainer.style.display = "none";
+      thirdStepContainer.style.display = "flex";
+      backButton.style.display = "inline";
+      updateObject(step, "step", 3);
+    }
+  }
+
+  if (step.step === 1) {
+    if (validateFirstStep()) {
+      firstStepContainer.style.display = "none";
+      secondStepContainer.style.display = "flex";
+      backButton.style.display = "inline";
+      updateObject(step, "step", 2);
+    }
   }
 }
 
@@ -55,25 +83,31 @@ function validateFirstStep() {
   const firstName = document.querySelector("#first-name");
   const lastName = document.querySelector("#last-name");
   const email = document.querySelector("#email");
-  updateObject(step0, "step", 0);
   if (firstName.value) {
     applyDefaultToField(firstName);
-    updateObject((step0["firstName"] = firstName.value));
+    updateObject((step.user.firstName = firstName.value));
   } else {
     applyErrorToField(firstName);
     result = false;
   }
   if (lastName.value) {
     applyDefaultToField(lastName);
-    updateObject((step0["lastName"] = lastName.value));
+    updateObject((step.user.lastName = lastName.value));
   } else {
     applyErrorToField(lastName);
     result = false;
   }
-  if (email.value || email.validity.typeMismatch) {
+  // if (email.validity.typeMismatch || email.value) {
+  //   applyDefaultToField(email);
+  //   updateObject((step.user.email = email.value));
+  // } else {
+  //   applyErrorToField(email);
+  //   result = false;
+  // }
+
+  if (emailValidation(email)) {
     applyDefaultToField(email);
-    updateObject((step0["email"] = email.value));
-    console.log(JSON.stringify(step0));
+    updateObject((step.user.email = email.value));
   } else {
     applyErrorToField(email);
     result = false;
@@ -84,21 +118,55 @@ function validateFirstStep() {
 
 function validateSecondStep() {
   let result = true;
-  updateObject(step1, "step", 1);
   const primaryAddress = document.querySelector("#primary-address");
   const secondaryAddress = document.querySelector("#secondary-address");
   const shirtSize = document.querySelector("#shirt-size");
   if (primaryAddress.value) {
     applyDefaultToField(primaryAddress);
+    updateObject((step.user.primaryAddress = primaryAddress.value));
   } else {
     applyErrorToField(primaryAddress);
     result = false;
   }
+  if (secondaryAddress.value) {
+    updateObject((step.user.secondaryAddress = secondaryAddress.value));
+  }
+
   if (shirtSize.value) {
     applyDefaultToField(shirtSize);
+    updateObject((step.user.shirtSize = shirtSize.value));
   } else {
     applyErrorToField(shirtSize);
     result = false;
+  }
+
+  return result;
+}
+
+function validateThirdStep() {
+  const password = document.querySelector("#password");
+  const repeatPassword = document.querySelector("#repeat-password");
+  const passwordError = document.querySelector("#password-error");
+  let result = true;
+  if (password.value) {
+    applyDefaultToField(password);
+  } else {
+    applyErrorToField(password);
+    result = false;
+  }
+  if (repeatPassword.value) {
+    applyDefaultToField(repeatPassword);
+  } else {
+    applyErrorToField(repeatPassword);
+    result = false;
+  }
+  if (password.value !== repeatPassword.value) {
+    applyErrorToField(password);
+    applyErrorToField(repeatPassword);
+    passwordError.textContent = "Passwords must match!";
+    result = false;
+  } else {
+    updateObject((step.user.password = password.value));
   }
 
   return result;
@@ -112,6 +180,15 @@ function applyErrorToField(input) {
 }
 
 function applyDefaultToField(input) {
-  input.style.border = "1px solid black";
+  input.style.border = "1px solid rgb(0, 152, 187)";
   input.style.outline = "none";
+}
+
+function emailValidation(email) {
+  const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (email.value.match(mailformat)) {
+    return true;
+  } else {
+    return false;
+  }
 }
