@@ -19,6 +19,10 @@ main {
     margin: 0 auto;
 }
 
+.hidden {
+    display: none;
+}
+
 form {
     display: flex;
     flex-direction: column;

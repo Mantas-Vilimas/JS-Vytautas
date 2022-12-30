@@ -6,6 +6,7 @@ const continueButton = document.querySelector("#continue-button");
 const backButton = document.querySelector("#back-button");
 const form = document.querySelector("form");
 const result = document.querySelector("#result");
+const email = document.querySelector("#email");
 
 secondStepContainer.style.display = "none";
 thirdStepContainer.style.display = "none";
@@ -25,21 +26,21 @@ function goBack(event) {
   }
 
   if (step.step === 2) {
-    secondStepContainer.style.display = "none";
-    firstStepContainer.style.display = "flex";
+    closeStep(secondStepContainer);
+    openStep(firstStepContainer);
     backButton.style.display = "none";
     updateObject(step, "step", 1);
   }
 
   if (step.step === 3) {
-    thirdStepContainer.style.display = "none";
-    secondStepContainer.style.display = "flex";
+    closeStep(thirdStepContainer);
+    openStep(secondStepContainer);
     updateObject(step, "step", 2);
   }
 
   if (step.step === 4) {
-    fourthStepContainer.style.display = "none";
-    thirdStepContainer.style.display = "flex";
+    closeStep(fourthStepContainer);
+    openStep(thirdStepContainer);
     continueButton.style.display = "inline";
     updateObject(step, "step", 3);
   }
@@ -49,8 +50,8 @@ function proceedFormStep(event) {
   event.preventDefault();
   if (step.step === 3) {
     if (validateThirdStep()) {
-      thirdStepContainer.style.display = "none";
-      fourthStepContainer.style.display = "flex";
+      closeStep(thirdStepContainer);
+      openStep(fourthStepContainer);
       updateObject(step, "step", 4);
       continueButton.style.display = "none";
       result.textContent = JSON.stringify(step);
@@ -59,8 +60,8 @@ function proceedFormStep(event) {
 
   if (step.step === 2) {
     if (validateSecondStep()) {
-      secondStepContainer.style.display = "none";
-      thirdStepContainer.style.display = "flex";
+      closeStep(secondStepContainer);
+      openStep(thirdStepContainer);
       backButton.style.display = "inline";
       updateObject(step, "step", 3);
     }
@@ -68,8 +69,8 @@ function proceedFormStep(event) {
 
   if (step.step === 1) {
     if (validateFirstStep()) {
-      firstStepContainer.style.display = "none";
-      secondStepContainer.style.display = "flex";
+      closeStep(firstStepContainer);
+      openStep(secondStepContainer);
       backButton.style.display = "inline";
       updateObject(step, "step", 2);
     }
@@ -99,23 +100,14 @@ function validateFirstStep() {
     applyErrorToField(lastName);
     result = false;
   }
-  // console.log(email.validity.typeMismatch);
-  // if (email.validity.typeMismatch || email.value) {
-  //   applyDefaultToField(email);
-  //   updateObject((step.user.email = email.value));
-  // } else {
-  //   applyErrorToField(email);
-  //   result = false;
-  // }
-
-  if (emailValidation(email)) {
+  console.log(email.validity.typeMismatch);
+  if (!email.validity.typeMismatch && email.value) {
     applyDefaultToField(email);
     updateObject((step.user.email = email.value));
   } else {
     applyErrorToField(email);
     result = false;
   }
-
   return result;
 }
 
@@ -187,11 +179,10 @@ function applyDefaultToField(input) {
   input.style.outline = "none";
 }
 
-function emailValidation(email) {
-  const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (email.value.match(mailformat)) {
-    return true;
-  } else {
-    return false;
-  }
+function closeStep(element) {
+  element.style.display = "none";
+}
+
+function openStep(element) {
+  element.style.display = "flex";
 }
